@@ -47,11 +47,11 @@ def push_files(HOST,AUTH,Domain):
         print("[+] Triggered Host discovery on:", str(HOST))
         #print(create_dir)
         out = os.system(create_dir)
-        print(out)
+        #print(out)
         #check connection
         if out == 0:
-            os.system(send_ps_file)
-            os.system(send_ps_file1)
+            rv1 = os.system(send_ps_file)
+            rv2 = os.system(send_ps_file1)
             cmd=com_path+"\\get_ip.ps1 -path "+com_path
             cmd1=com_path+"\\get_user_ad.ps1 -OuOnly | Export-csv "\
             +com_path+"\\active_users.csv"
@@ -61,8 +61,8 @@ def push_files(HOST,AUTH,Domain):
             "powershell.exe -command ' + cmd +' "'
             query1= r'/usr/bin/winexe -U"'+ AUTH + '" //' + HOST +' '+  '\
             "powershell.exe -command ' + cmd1 +' "'
-            print(query)
-            print(query1)
+            #print(query)
+            #print(query1)
             #retval = run(update_dns, stdout=PIPE, stderr=PIPE, shell=True).returncode
             #execute winexe query
             retval = run(query, stdout=PIPE, stderr=PIPE, shell=True).returncode                    # universal_newlines=True,
