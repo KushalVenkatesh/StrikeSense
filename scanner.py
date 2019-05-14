@@ -140,11 +140,11 @@ mode_choices = ['all', 'individual']
 
 parser = argparse.ArgumentParser(description=about, formatter_class=argparse.RawTextHelpFormatter)
 parser.add_argument('--mode', required=True, choices=mode_choices, help='Mode of scan.')
-parser.add_argument('--host', required=True, help='IP of the host to scan.')
-parser.add_argument('--username', required=True, help='Username of admin.')
-parser.add_argument('--password', required=True, help='Password of admin.')
+parser.add_argument('--host', required=False, help='IP of the host to scan.')
+parser.add_argument('--username', required=False, help='Username of admin.')
+parser.add_argument('--password', required=False, help='Password of admin.')
 parser.add_argument('--domain', required=False, help='Domain of system.')
-parser.add_argument('--os', required=True, choices=os_choices, help='OS family')
+parser.add_argument('--os', required=False, choices=os_choices, help='OS family')
 parser.add_argument('--sport', required=False, help='Starting port of port range.')
 parser.add_argument('--eport', required=False, help='Ending port of port range.')
 
