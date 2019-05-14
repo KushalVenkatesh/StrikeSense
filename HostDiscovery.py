@@ -262,7 +262,7 @@ def get_ip():
         Domain1 = row_data[3]
         #print(Domain1)
         data=Domain1.split('.',2)
-        print(data)
+        #print(data)
         Domain=str(data[1])
         AUTH = Domain+"\\"+User+"%"+Password
         push_files(HOST,AUTH,Domain)

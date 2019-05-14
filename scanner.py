@@ -15,6 +15,7 @@ import os_details
 import service
 import port_f
 from HostDiscovery import get_ip as discover_hosts
+from VulnerabilityMapping import StartMapping
 
 desc = '''
             StrikeSense Network Scanner
@@ -155,6 +156,7 @@ def scanner(host, username, password, domain, os,
             print("[+] Host IP:", str(host))
             port_f.scan(host, 1, 0, 1000)
             print("~"*60)
+        StartMapping()
     return ret
 
 
