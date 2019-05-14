@@ -40,7 +40,7 @@ common_ports = {
 	'10000': 'VIRTUADMIN/WEBMIN'}
 
 def scan(host, flag, start_port, end_port):
-    print("~"*60)
+    #print("~"*60)
     print("=> Services on open ports:\n")
     now = datetime.datetime.now()
     scantime = now.strftime("%Y-%m-%d %H:%M:%S")
@@ -68,7 +68,7 @@ def scan(host, flag, start_port, end_port):
     if p_service:
         print("\tNo open ports with services found.")
     if open_ports:
-        print("~"*60)
+        #print("~"*60)
         print("=> Open Ports: \n")
         for port in sorted(open_ports):
             service = get_service(str(port))

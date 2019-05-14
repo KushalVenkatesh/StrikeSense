@@ -151,7 +151,10 @@ def scanner(host, username, password, domain, os,
         discover_hosts()
         online_hosts = GetOnlineHosts()
         for host in online_hosts:
+            print("~"*60)
+            print("[+] Host IP:", str(host))
             port_f.scan(host, 1, 0, 1000)
+            print("~"*60)
     return ret
 
 
