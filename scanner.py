@@ -110,6 +110,16 @@ def check_host_exist(host):
     else:
         return 0
 
+def GetOnlineHosts():
+    cnx = mysql.connector.connect(**AuthDB.config)
+    cursor = cnx.cursor()
+    query_get = 'select ip_addr from scanner_computer_info where user_name != "NULL";'
+    cursor.execute(query_get)
+    row_data = cursor.fetchone()
+    online_hosts = []
+    while row_data:
+        online_hosts.append(str(row_data[0]))
+    return online_hosts
 
 def scanner(host, username, password, domain, os,
             flag, start_port, end_port, scan_mode):
@@ -131,6 +141,9 @@ def scanner(host, username, password, domain, os,
             print("[+] ERROR scanner_port:"+str(e))
     else:
         discover_hosts()
+        online_hosts = GetOnlineHosts()
+        for host in online_hosts:
+            port_f.scan(host, 1, 0, 1000)
     return ret
 
 
