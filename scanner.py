@@ -179,7 +179,8 @@ port_supplied = 1
 if args.sport and args.eport:
     port_supplied = 0
 
-scanner(args.host, args.username,
-        args.password, args.domain,
-        args.os, port_supplied,
-        args.sport, args.eport, args.mode)
+if __name__ == "__main__":
+    scanner(args.host, args.username,
+            args.password, args.domain,
+            args.os, port_supplied,
+            args.sport, args.eport, args.mode)
