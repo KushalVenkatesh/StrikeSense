@@ -154,32 +154,26 @@ def scanner(host, username, password, domain, os,
     return ret
 
 
-
-os_choices = ['windows', 'linux']
-mode_choices = ['all', 'individual']
-
-parser = argparse.ArgumentParser(description=about, formatter_class=argparse.RawTextHelpFormatter)
-parser.add_argument('--mode', required=True, choices=mode_choices, help='Mode of scan.')
-parser.add_argument('--host', required=False, help='IP of the host to scan.')
-parser.add_argument('--username', required=False, help='Username of admin.')
-parser.add_argument('--password', required=False, help='Password of admin.')
-parser.add_argument('--domain', required=False, help='Domain of system.')
-parser.add_argument('--os', required=False, choices=os_choices, help='OS family')
-parser.add_argument('--sport', required=False, help='Starting port of port range.')
-parser.add_argument('--eport', required=False, help='Ending port of port range.')
-
-if len(sys.argv)==1:
-        parser.print_help()
-        sys.exit(1)
-
-args = parser.parse_args()
-
-port_supplied = 1
-
-if args.sport and args.eport:
-    port_supplied = 0
-
 if __name__ == "__main__":
+    os_choices = ['windows', 'linux']
+    mode_choices = ['all', 'individual']
+    parser = argparse.ArgumentParser(description=about, formatter_class=argparse.RawTextHelpFormatter)
+    parser.add_argument('--mode', required=True, choices=mode_choices, help='Mode of scan.')
+    parser.add_argument('--host', required=False, help='IP of the host to scan.')
+    parser.add_argument('--username', required=False, help='Username of admin.')
+    parser.add_argument('--password', required=False, help='Password of admin.')
+    parser.add_argument('--domain', required=False, help='Domain of system.')
+    parser.add_argument('--os', required=False, choices=os_choices, help='OS family')
+    parser.add_argument('--sport', required=False, help='Starting port of port range.')
+    parser.add_argument('--eport', required=False, help='Ending port of port range.')
+
+    if len(sys.argv)==1:
+            parser.print_help()
+            sys.exit(1)
+    args = parser.parse_args()
+    port_supplied = 1
+    if args.sport and args.eport:
+        port_supplied = 0
     scanner(args.host, args.username,
             args.password, args.domain,
             args.os, port_supplied,
