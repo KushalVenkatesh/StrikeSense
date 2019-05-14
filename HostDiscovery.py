@@ -154,7 +154,7 @@ def insert_data_db(Domain,scanner_path):
     path=scanner_path+"/ip_address.csv"
     cnx = mysql.connector.connect(**AuthDB.config)
     cursor = cnx.cursor()
-    check_table()
+    #check_table()
     with open (path, 'r') as data:
         reader = csv.reader(data)
         for row in reader:
