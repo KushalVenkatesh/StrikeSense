@@ -105,6 +105,8 @@ def check_host_exist(host):
     cursor = cnx.cursor(buffered=True)
     cursor.execute(query)
     row_data = cursor.fetchone()
+    cursor.close()
+    cnx.close()
     if row_data is not None:
         return 1
     else:
@@ -119,6 +121,8 @@ def GetOnlineHosts():
     online_hosts = []
     while row_data:
         online_hosts.append(str(row_data[0]))
+    cursor.close()
+    cnx.close()
     return online_hosts
 
 def scanner(host, username, password, domain, os,
