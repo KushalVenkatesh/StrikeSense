@@ -33,6 +33,9 @@ desc = '''
         [+] Manageable results, MariaDB and other MySQL
             variant compatible.
 
+    Contributions:
+            https://github.com/Pinpwn/StrikeSense
+
     Author:
             Kushagra Choudhary(@Pinpwn)
             https://pwnprone.wordpress.com
