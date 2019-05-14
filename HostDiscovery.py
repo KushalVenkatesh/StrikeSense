@@ -92,6 +92,7 @@ def push_files(HOST,AUTH,Domain):
 def insert_user(HOST,scanner_path):
     #this function is use for inserting active use in scanner_computer_info
     #get input form active_user.csv file and insert in db
+    ActiveUserCount = 0
     path=scanner_path+"/active_users.csv"
     cnx = mysql.connector.connect(**AuthDB.config)
     cursor = cnx.cursor(buffered=True)
@@ -113,6 +114,7 @@ def insert_user(HOST,scanner_path):
             '''
             logon_time1=try_parsing_date(data)
             if logon_time1 is not None:
+                ActiveUserCount += 1
                 logon_time=str(logon_time1)
                 user=row[2]
                 ip=row[5]
@@ -141,13 +143,14 @@ def insert_user(HOST,scanner_path):
                     cnx.commit()
                 except:
                     pass
-    print("[+] Active users updated in database.")
+    print("[+] "+str(ActiveUserCount)+" Active users updated in database.")
     cursor.close()
     cnx.close()
 
 
 def insert_data_db(Domain,scanner_path):
     #this function is use to insert ip address of domain computer in acr_ecr_computer_info
+    TotalHostCount = 0
     path=scanner_path+"/ip_address.csv"
     cnx = mysql.connector.connect(**AuthDB.config)
     cursor = cnx.cursor()
@@ -155,6 +158,7 @@ def insert_data_db(Domain,scanner_path):
     with open (path, 'r') as data:
         reader = csv.reader(data)
         for row in reader:
+            TotalHostCount += 1
             #datum = ','.join(row)
             os_srv_pack=row[4]
             try:
@@ -197,7 +201,7 @@ def insert_data_db(Domain,scanner_path):
                 #print(update)
                 cursor.execute(update)
                 cnx.commit()
-    print("[+] Hosts updated in database.")
+    print("[+] "+str(TotalHostCount)+" Hosts updated in database.")
     cursor.close()
     cnx.close()
 
@@ -207,9 +211,9 @@ def check_table():
     cursor = cnx.cursor(buffered=True)
     sh_table = ("Show tables like 'scanner_computer_info';")
     cursor.execute(sh_table)
-    row_data = cursor.fetchone()
     #print(row_data)
     if row_data is None:
+        row_data = cursor.fetchone()
         create_table="CREATE TABLE scanner_computer_info\
         (id int NOT NULL AUTO_INCREMENT,ip_addr varchar(50) DEFAULT NULL,\
         fqdn text,windows_ver text,dev_gr_id int(11) DEFAULT NULL,\
