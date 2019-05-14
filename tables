@@ -1,0 +1,5 @@
+create table scanner_hosts(id int PRIMARY KEY AUTO_INCREMENT, ScanInitTime datetime, host text, part text, vendor text, product text, version text, vendor_update text);
+
+create table scanner_services(id int PRIMARY KEY AUTO_INCREMENT, ScanInitTime datetime, host text, port int, part text, vendor text, product text, version text, vendor_update text);
+
+create table scanner_ports(id int PRIMARY KEY AUTO_INCREMENT, ScanInitTime datetime, host text, port int);
