@@ -52,8 +52,8 @@ def push_files(HOST,AUTH,Domain):
         if out == 0:
             os.system(send_ps_file)
             os.system(send_ps_file1)
-            cmd=com_path+"\get_ip.ps1 -path "+com_path
-            cmd1=com_path+"\get_user_ad.ps1 -OuOnly | Export-csv "\
+            cmd=com_path+"\\get_ip.ps1 -path "+com_path
+            cmd1=com_path+"\\get_user_ad.ps1 -OuOnly | Export-csv "\
             +com_path+"\\active_users.csv"
             #-LastLogonOnly -OuOnly -MaxEvent 10000
             #winexe querys
@@ -61,6 +61,8 @@ def push_files(HOST,AUTH,Domain):
             "powershell.exe -command ' + cmd +' "'
             query1= r'/usr/local/bin/winexe -U"'+ AUTH + '" //' + HOST +' '+  '\
             "powershell.exe -command ' + cmd1 +' "'
+            print(query)
+            print(query1)
             #retval = run(update_dns, stdout=PIPE, stderr=PIPE, shell=True).returncode
             #execute winexe query
             retval = run(query, stdout=PIPE, stderr=PIPE, shell=True).returncode                    # universal_newlines=True,
