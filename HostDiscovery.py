@@ -77,7 +77,7 @@ def push_files(HOST,AUTH,Domain):
             'lcd "+ scanner_path +"; cd "+share_path+"; prompt OFF; mget active_users.csv \
             ' -mSMB2"
             #print(download_file)
-            os.system(download_file1)
+            rv3 = os.system(download_file1)
             #check file pull successful
             if retval == 0:
                 #after pull file call this function
