@@ -57,9 +57,9 @@ def push_files(HOST,AUTH,Domain):
             +com_path+"\\active_users.csv"
             #-LastLogonOnly -OuOnly -MaxEvent 10000
             #winexe querys
-            query= r'/usr/local/bin/winexe -U"'+ AUTH + '" //' + HOST +' '+  '\
+            query= r'/usr/bin/winexe -U"'+ AUTH + '" //' + HOST +' '+  '\
             "powershell.exe -command ' + cmd +' "'
-            query1= r'/usr/local/bin/winexe -U"'+ AUTH + '" //' + HOST +' '+  '\
+            query1= r'/usr/bin/winexe -U"'+ AUTH + '" //' + HOST +' '+  '\
             "powershell.exe -command ' + cmd1 +' "'
             print(query)
             print(query1)
