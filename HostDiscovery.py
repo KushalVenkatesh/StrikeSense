@@ -185,10 +185,11 @@ def insert_data_db(Domain,scanner_path):
                 try:
                     cursor.execute(query1,(ip,fqdn,window_ver,win_typ,os_ver,os_srv_pack))
                     cnx.commit()
-                    print("insert_data_db: 0")
+                    #print("insert_data_db: 0")
                 except Exception as e:
-                    print(e)
-                    print("Try Again")
+                    pass
+                    #print(e)
+                    #print("Try Again")
             else:
                 update="update scanner_computer_info set ip_addr='"+ip+"',\
                 windows_ver='"+window_ver+"',os_srv_pack='"+os_srv_pack+"',\
