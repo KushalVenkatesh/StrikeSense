@@ -43,7 +43,8 @@ def push_files(HOST,AUTH,Domain):
         ' -mSMB2"
         #print(send_ps_file1,"+++++++++++++++++++++++++++")
         #print(create_dir,"--------------------------------------------------------")
-        print("------------------",HOST,"------------------")
+        print("[+] Found Domain Controller:", str(HOST))
+        print("[+] Triggered Host discovery on:", str(HOST))
         #print(create_dir)
         out = os.system(create_dir)
         print(out)
@@ -84,7 +85,7 @@ def push_files(HOST,AUTH,Domain):
                 print("Unable to insert data : 0")
         else:
             print("connection error",HOST)
-        print("------------------------END------------------------")
+        print("[+] Host Discovery ended")
 
 def insert_user(HOST,scanner_path):
     #this function is use for inserting active use in scanner_computer_info
@@ -138,6 +139,7 @@ def insert_user(HOST,scanner_path):
                     cnx.commit()
                 except:
                     pass
+    print("[+] Active users updated in database.")
     cursor.close()
     cnx.close()
 
@@ -192,7 +194,7 @@ def insert_data_db(Domain,scanner_path):
                 #print(update)
                 cursor.execute(update)
                 cnx.commit()
-    print("Update Database:0")
+    print("[+] Hosts updated in database.")
     cursor.close()
     cnx.close()
 
