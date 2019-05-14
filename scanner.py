@@ -124,6 +124,7 @@ def GetOnlineHosts():
     online_hosts = []
     while row_data:
         online_hosts.append(str(row_data[0]))
+        row_data = cursor.fetchone()
     cursor.close()
     cnx.close()
     return online_hosts
