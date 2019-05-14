@@ -96,7 +96,7 @@ def insert_user(HOST,scanner_path):
     path=scanner_path+"/active_users.csv"
     cnx = mysql.connector.connect(**AuthDB.config)
     cursor = cnx.cursor(buffered=True)
-    check_table()
+    #check_table()
     with open(path, 'r') as fin:
         data = fin.read().splitlines(True)
     with open(path, 'w') as fout:
